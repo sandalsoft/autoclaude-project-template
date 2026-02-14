@@ -37,6 +37,15 @@ Claude should:
 3. Read and execute `.claude/commands/flow-next-interview.md`, passing the idea as context
 4. Continue through the flow as each step completes
 
+## Recommended Plugins
+
+Two optional plugins improve safety and session continuity:
+
+- **Destructive Command Guard (dcg)** — Blocks dangerous commands (`rm -rf`, `git reset --hard`, `git push --force`, etc.) before execution. Install with `bash scripts/setup-plugins.sh` or see `docs/plugins.md`.
+- **Claude-Mem** — Persistent memory across Claude Code sessions. Captures observations automatically and injects relevant context into future sessions. Install from within Claude Code: `/plugin install claude-mem`.
+
+See `docs/plugins.md` for full details, configuration, and security pack options.
+
 ## Coding Standards
 
 - Write clean, working code — no placeholders or TODOs

@@ -39,7 +39,12 @@ Or if you just want to use the template without a GitHub repo:
 │   ├── logs/                          # Execution logs
 │   └── state/                         # State tracking
 ├── docs/
-│   └── interview-answers.md           # Interview output (generated)
+│   ├── interview-answers.md           # Interview output (generated)
+│   └── plugins.md                     # Plugin documentation
+├── scripts/
+│   ├── setup-plugins.sh               # Plugin installation script
+│   └── ralph/
+│       └── ...
 └── plan.md                            # Implementation plan (generated)
 ```
 
@@ -50,6 +55,17 @@ Or if you just want to use the template without a GitHub repo:
 | `/flow-next-interview <idea>` | Structured discovery interview |
 | `/flow-next-plan` | Generate implementation plan |
 | `/flow-next-init-ralph` | Begin autonomous execution |
+
+## Plugins
+
+Optional plugins for safety and continuity:
+
+| Plugin | Purpose | Install |
+|--------|---------|---------|
+| [Destructive Command Guard](https://github.com/Dicklesworthstone/destructive_command_guard) | Blocks dangerous commands before execution | `bash scripts/setup-plugins.sh` |
+| [Claude-Mem](https://github.com/thedotmack/claude-mem) | Persistent memory across sessions | `/plugin install claude-mem` |
+
+Run `bash scripts/setup-plugins.sh` to install both, or see `docs/plugins.md` for details.
 
 ## Customization
 
