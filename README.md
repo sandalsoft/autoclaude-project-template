@@ -29,10 +29,19 @@ Or if you just want to use the template without a GitHub repo:
 
 ```
 ├── CLAUDE.md                          # Project instructions for Claude
-├── .claude/commands/
-│   ├── flow-next-interview.md         # Discovery interview
-│   ├── flow-next-plan.md              # Plan generation
-│   └── flow-next-init-ralph.md        # Autonomous execution
+├── .claude/
+│   ├── commands/                      # Slash commands (flow + skills)
+│   │   ├── flow-next-interview.md     # Discovery interview
+│   │   ├── flow-next-plan.md          # Plan generation
+│   │   ├── flow-next-init-ralph.md    # Autonomous execution
+│   │   └── *.md                       # 12 installed skill commands
+│   └── skills/                        # Supporting files for skills
+│       ├── session-handoff/           # Scripts & templates
+│       ├── qa-test-planner/           # Test case generators & references
+│       ├── c4-architecture/           # C4 syntax & pattern references
+│       ├── database-schema-designer/  # Schema checklists & templates
+│       ├── dependency-updater/        # Update scripts
+│       └── clean-web-design/          # Design tokens & component patterns
 ├── scripts/ralph/
 │   ├── mark_done.py                   # Step tracking utility
 │   ├── steps.json                     # Machine-readable plan (generated)
@@ -66,6 +75,25 @@ Optional plugins for safety and continuity:
 | [Claude-Mem](https://github.com/thedotmack/claude-mem) | Persistent memory across sessions | `/plugin install claude-mem` |
 
 Run `bash scripts/setup-plugins.sh` to install both, or see `docs/plugins.md` for details.
+
+## Installed Skills
+
+This template comes with 12 pre-installed Claude Code skills:
+
+| Command | Purpose |
+|---------|---------|
+| `/crafting-effective-readmes` | Write or improve README files matched to project type |
+| `/commit-work` | Review, stage, and create well-structured git commits |
+| `/game-changing-features` | Find 10x product opportunities and high-leverage improvements |
+| `/mermaid-diagrams` | Create software diagrams (class, sequence, flowchart, ERD, C4) |
+| `/napkin` | Per-repo learning file — tracks mistakes and patterns |
+| `/tailwind-v4-shadcn` | Set up Tailwind v4 + shadcn/ui with correct architecture |
+| `/session-handoff` | Create handoff documents for seamless session transfers |
+| `/qa-test-planner` | Generate test plans, test cases, regression suites, bug reports |
+| `/c4-architecture` | Generate C4 model architecture diagrams in Mermaid |
+| `/database-schema-designer` | Design SQL/NoSQL schemas with migrations and indexing |
+| `/dependency-updater` | Smart dependency management for any language |
+| `/clean-web-design` | Professional design system with HSL tokens and components |
 
 ## Customization
 

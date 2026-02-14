@@ -46,6 +46,27 @@ Two optional plugins improve safety and session continuity:
 
 See `docs/plugins.md` for full details, configuration, and security pack options.
 
+## Installed Skills
+
+This template includes pre-installed skill commands available via slash commands:
+
+| Command | Purpose |
+|---------|---------|
+| `/crafting-effective-readmes` | Write or improve README files matched to project type and audience |
+| `/commit-work` | Review, stage, and create well-structured git commits |
+| `/game-changing-features` | Find 10x product opportunities and high-leverage improvements |
+| `/mermaid-diagrams` | Create software diagrams (class, sequence, flowchart, ERD, C4, state) |
+| `/napkin` | Per-repo learning file — tracks mistakes, corrections, and patterns |
+| `/tailwind-v4-shadcn` | Set up Tailwind v4 + shadcn/ui with correct architecture |
+| `/session-handoff` | Create handoff documents for seamless session transfers |
+| `/qa-test-planner` | Generate test plans, test cases, regression suites, and bug reports |
+| `/c4-architecture` | Generate C4 model architecture diagrams in Mermaid |
+| `/database-schema-designer` | Design SQL/NoSQL schemas with normalization and migration patterns |
+| `/dependency-updater` | Smart dependency management for any language |
+| `/clean-web-design` | Professional design system with HSL tokens, Tailwind, and components |
+
+Skills are stored in `.claude/commands/` (command files) and `.claude/skills/` (supporting references and scripts).
+
 ## Coding Standards
 
 - Write clean, working code — no placeholders or TODOs
