@@ -110,9 +110,47 @@ Settings are stored at `~/.claude-mem/settings.json`, auto-generated with defaul
 
 ---
 
+## Skill Selector
+
+**Repository:** [sandalsoft/skill-selector](https://github.com/sandalsoft/skill-selector)
+
+Analyzes implementation plans, discovers relevant skills from the ecosystem, installs them, and rewrites plans to leverage what's available. Use it after generating a plan (via `/flow-next-plan`) to equip the agent with the best available skills before building.
+
+### What It Does
+
+1. **Plan Analysis** — Parses your plan to identify technology and domain boundaries where expert skills would improve output quality
+2. **Ecosystem Search** — Uses `npx skills find` with targeted queries for each identified domain
+3. **Skill Recommendations** — Presents a prioritized table (capped at 5-7 recommendations) showing install counts, source repos, and relevance
+4. **Automated Installation** — Installs selected skills to project scope after user confirmation
+5. **Plan Enhancement** — Rewrites the original plan to reference installed skills, adopt their conventions, and remove generic guidance the skills now handle
+
+### Install
+
+```bash
+npx skills add sandalsoft/skill-selector
+```
+
+Or use the project setup script:
+
+```bash
+bash scripts/setup-plugins.sh
+```
+
+### Usage
+
+```
+/skill-selector path/to/plan.md
+/skill-selector fn-1
+/skill-selector "build a SvelteKit dashboard with D3 charts"
+```
+
+When invoked without arguments, scans `.flow/specs/` for the most recent spec file.
+
+---
+
 ## Setup Script
 
-Install both plugins at once:
+Install all plugins at once:
 
 ```bash
 bash scripts/setup-plugins.sh
@@ -121,5 +159,6 @@ bash scripts/setup-plugins.sh
 The script will:
 1. Install dcg with automatic platform detection
 2. Install claude-mem plugin
-3. Verify installations
-4. Display status summary
+3. Install skill-selector skill via `npx skills add`
+4. Verify installations
+5. Display status summary
