@@ -54,6 +54,7 @@ This template includes pre-installed skill commands available via slash commands
 |---------|---------|
 | `/crafting-effective-readmes` | Write or improve README files matched to project type and audience |
 | `/commit-work` | Review, stage, and create well-structured git commits |
+| `/create-skill` | Scaffold and register new skills, commands, or plugins in this template |
 | `/game-changing-features` | Find 10x product opportunities and high-leverage improvements |
 | `/mermaid-diagrams` | Create software diagrams (class, sequence, flowchart, ERD, C4, state) |
 | `/napkin` | Per-repo learning file — tracks mistakes, corrections, and patterns |
