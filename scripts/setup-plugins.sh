@@ -59,6 +59,26 @@ fi
 
 echo ""
 
+# --- Skill Selector ---
+echo -e "${BOLD}3. Skill Selector${NC}"
+echo "   Discover and install ecosystem skills for implementation plans"
+echo "   https://github.com/sandalsoft/skill-selector"
+echo ""
+
+if npx skills list 2>/dev/null | grep -q "skill-selector"; then
+    ok "skill-selector is already installed"
+else
+    info "Installing skill-selector..."
+    if npx skills add sandalsoft/skill-selector -y 2>/dev/null; then
+        ok "skill-selector installed successfully"
+    else
+        warn "skill-selector auto-install failed — install manually:"
+        echo "   npx skills add sandalsoft/skill-selector"
+    fi
+fi
+
+echo ""
+
 # --- Summary ---
 echo -e "${BOLD}=== Setup Summary ===${NC}"
 echo ""
@@ -74,6 +94,12 @@ if [ -d "$HOME/.claude-mem" ]; then
     ok "claude-mem: installed"
 else
     warn "claude-mem: install from within Claude Code session"
+fi
+
+if npx skills list 2>/dev/null | grep -q "skill-selector"; then
+    ok "skill-selector: installed"
+else
+    warn "skill-selector: not installed (run: npx skills add sandalsoft/skill-selector)"
 fi
 
 echo ""

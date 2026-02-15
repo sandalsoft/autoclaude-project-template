@@ -39,10 +39,11 @@ Claude should:
 
 ## Recommended Plugins
 
-Two optional plugins improve safety and session continuity:
+Three optional plugins improve safety, session continuity, and skill discovery:
 
 - **Destructive Command Guard (dcg)** — Blocks dangerous commands (`rm -rf`, `git reset --hard`, `git push --force`, etc.) before execution. Install with `bash scripts/setup-plugins.sh` or see `docs/plugins.md`.
 - **Claude-Mem** — Persistent memory across Claude Code sessions. Captures observations automatically and injects relevant context into future sessions. Install from within Claude Code: `/plugin install claude-mem`.
+- **Skill Selector** — Analyzes implementation plans, discovers relevant skills from the ecosystem, installs them, and rewrites plans to leverage what's available. Install with `npx skills add sandalsoft/skill-selector`.
 
 See `docs/plugins.md` for full details, configuration, and security pack options.
 
@@ -64,6 +65,7 @@ This template includes pre-installed skill commands available via slash commands
 | `/database-schema-designer` | Design SQL/NoSQL schemas with normalization and migration patterns |
 | `/dependency-updater` | Smart dependency management for any language |
 | `/clean-web-design` | Professional design system with HSL tokens, Tailwind, and components |
+| `/skill-selector` | Analyze plans, discover ecosystem skills, install them, and rewrite plans to leverage what's available |
 
 Skills are stored in `.claude/commands/` (command files) and `.claude/skills/` (supporting references and scripts).
 
