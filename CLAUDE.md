@@ -39,11 +39,10 @@ Claude should:
 
 ## Recommended Plugins
 
-Three optional plugins improve safety, session continuity, and skill discovery:
+Two optional plugins improve safety and session continuity:
 
 - **Destructive Command Guard (dcg)** — Blocks dangerous commands (`rm -rf`, `git reset --hard`, `git push --force`, etc.) before execution. Install with `bash scripts/setup-plugins.sh` or see `docs/plugins.md`.
 - **Claude-Mem** — Persistent memory across Claude Code sessions. Captures observations automatically and injects relevant context into future sessions. Install from within Claude Code: `/plugin install claude-mem`.
-- **Skill Selector** — Analyzes implementation plans, discovers relevant skills from the ecosystem, installs them, and rewrites plans to leverage what's available. Install with `npx skills add sandalsoft/skill-selector`.
 
 See `docs/plugins.md` for full details, configuration, and security pack options.
 
