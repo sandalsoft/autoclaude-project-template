@@ -46,6 +46,15 @@ Two optional plugins improve safety and session continuity:
 
 See `docs/plugins.md` for full details, configuration, and security pack options.
 
+## Secret Scanning (Gitleaks)
+
+Secrets are blocked at two layers:
+
+- **Pre-commit hook** — `.githooks/pre-commit` runs `gitleaks git --pre-commit --staged` before every commit. The hook is tracked in git; activate with `bash scripts/setup-gitleaks-hook.sh` or `bash scripts/setup-plugins.sh`.
+- **GitHub Actions CI** — `.github/workflows/gitleaks.yaml` calls the shared `sandalsoft/.github` gitleaks workflow on every push and PR across all branches.
+
+Customize false-positive allowlists in `.gitleaks.toml`.
+
 ## Installed Skills
 
 This template includes pre-installed skill commands available via slash commands:

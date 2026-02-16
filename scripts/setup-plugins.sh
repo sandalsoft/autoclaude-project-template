@@ -76,6 +76,20 @@ else
     warn "claude-mem: install from within Claude Code session"
 fi
 
+# --- Gitleaks Pre-commit Hook ---
+echo -e "${BOLD}3. Gitleaks Secret Scanning${NC}"
+echo "   Pre-commit hook to block secrets from being committed"
+echo "   https://github.com/gitleaks/gitleaks"
+echo ""
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [ -f "$SCRIPT_DIR/setup-gitleaks-hook.sh" ]; then
+    bash "$SCRIPT_DIR/setup-gitleaks-hook.sh"
+else
+    warn "setup-gitleaks-hook.sh not found — run it separately:"
+    echo "   bash scripts/setup-gitleaks-hook.sh"
+fi
+
 echo ""
 info "See docs/plugins.md for configuration details"
 echo ""

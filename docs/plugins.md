@@ -110,9 +110,61 @@ Settings are stored at `~/.claude-mem/settings.json`, auto-generated with defaul
 
 ---
 
+## Gitleaks (Secret Scanning)
+
+**Repository:** [gitleaks/gitleaks](https://github.com/gitleaks/gitleaks)
+
+Prevents secrets (API keys, tokens, private keys, passwords) from being committed to the repository. Protection operates at two layers:
+
+### Pre-commit Hook (Local)
+
+Runs `gitleaks git --pre-commit --staged` before every commit. If secrets are found, the commit is blocked.
+
+```bash
+bash scripts/setup-gitleaks-hook.sh
+```
+
+The hook script lives in `.githooks/pre-commit` (tracked in git, included in every clone). The setup script will:
+1. Install the `gitleaks` CLI (via Homebrew or the official install script)
+2. Set `git config core.hooksPath .githooks` to activate the tracked hooks directory
+
+### GitHub Actions CI (Remote)
+
+`.github/workflows/gitleaks.yaml` calls the shared workflow at `sandalsoft/.github/workflows/gitleaks.yaml@master` on every push and pull request across **all branches**. This is the safety net — if a secret bypasses the local hook, CI catches it.
+
+### Configuration
+
+Customize scanning rules in `.gitleaks.toml` at the repo root. The config uses `[extend] useDefault = true` to inherit all default detection rules (AWS, GitHub tokens, private keys, etc.) while allowing project-specific overrides:
+
+```toml
+[extend]
+  useDefault = true
+
+[allowlist]
+  # Ignore a specific test fixture
+  paths = ["testdata/fake-creds.json"]
+
+  # Ignore a known false positive regex
+  [[allowlist.regexes]]
+  description = "example API key in docs"
+  regex = "EXAMPLE_KEY_\\w+"
+```
+
+**Important:** Without `[extend] useDefault = true`, a custom config replaces all default rules, disabling detection entirely.
+
+### Useful Commands
+
+```bash
+gitleaks detect --staged          # Scan staged changes (what the hook runs)
+gitleaks detect                   # Scan entire repo working tree
+gitleaks detect --log-opts="HEAD" # Scan full git history
+```
+
+---
+
 ## Setup Script
 
-Install both plugins at once:
+Install all plugins at once:
 
 ```bash
 bash scripts/setup-plugins.sh
@@ -121,5 +173,6 @@ bash scripts/setup-plugins.sh
 The script will:
 1. Install dcg with automatic platform detection
 2. Install claude-mem plugin
-3. Verify installations
-4. Display status summary
+3. Install gitleaks and configure the pre-commit hook
+4. Verify installations
+5. Display status summary
